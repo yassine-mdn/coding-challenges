@@ -18,4 +18,18 @@ public class FileProcess {
             throw new FileNotFoundException();
         return file;
     }
+
+    /**
+     * Counts the number of bytes in the given file.
+     *
+     * @param file the file to count bytes from
+     * @return the number of bytes in the file
+     * @throws FileNotFoundException if the file is null or doesn't exist
+     */
+    public long countBytes(File file) throws FileNotFoundException {
+        if (file == null || !file.exists()) {
+            throw new FileNotFoundException();
+        }
+        return file.length();
+    }
 }
