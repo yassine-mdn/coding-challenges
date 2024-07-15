@@ -1,7 +1,8 @@
 package org.example;
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.*;
+import java.nio.file.Files;
 import java.util.Scanner;
+import java.util.stream.Stream;
 
 public class FileProcess {
 
@@ -27,9 +28,26 @@ public class FileProcess {
      * @throws FileNotFoundException if the file is null or doesn't exist
      */
     public long countBytes(File file) throws FileNotFoundException {
-        if (file == null || !file.exists()) {
+        if (ifFileExists(file))
             throw new FileNotFoundException();
-        }
+
         return file.length();
+    }
+
+
+    public long countLines(File file) throws IOException {
+        if (ifFileExists(file))
+            throw new FileNotFoundException();
+
+        BufferedReader reader = new BufferedReader(new FileReader(file));
+        int lines = 0;
+        while (reader.readLine() != null) lines++;
+        reader.close();
+
+        return lines;
+    }
+
+    private boolean ifFileExists(File file) {
+        return file == null || !file.exists();
     }
 }
