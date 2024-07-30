@@ -2,6 +2,7 @@ package org.example;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Scanner;
 import java.util.stream.Stream;
 
@@ -79,6 +80,14 @@ public class FileProcess {
             }
         }
         return words;
+    }
+
+    public long countChars(File file) throws IOException {
+        if (!file.exists()) {
+            throw new FileNotFoundException("File not found: " + file.getAbsolutePath());
+        }
+        byte[] byteArray = Files.readAllBytes(Path.of(file.getAbsolutePath()));
+        return byteArray.length;
     }
 
 }
