@@ -3,8 +3,7 @@ package org.example;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Scanner;
-import java.util.stream.Stream;
+
 
 public class FileProcess {
 
